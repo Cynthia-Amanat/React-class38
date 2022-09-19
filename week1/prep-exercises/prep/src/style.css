@@ -1,0 +1,17 @@
+
+body{
+    padding: 20% 30%;
+}
+
+.Counter{
+    justify-content: center;
+}
+p{
+   margin: 10px;
+   padding-left: 10px;
+}
+
+button{
+    margin: 10px 12px;
+
+}
