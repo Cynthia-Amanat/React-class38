@@ -1,29 +1,29 @@
 import allProducts from "../fake-data/all-products.js";
 import { useState, useEffect } from "react";
 
-const CategoryButton = ({ categories, setProducts }) => {
-  const [productName, setProductName] = useState("women's clothing");
+const CategoryButtons = ({ categories, setProducts }) => {
+  const [productCategory, setProductCategory] = useState("women's clothing");
 
-  const handleClick = (e) => {
-    const categoryValue = e.target.value.replace("FAKE: ", "");
-    setProductName(categoryValue);
+  const handleClick = (category) => {
+    const categoryValue = category.replace("FAKE: ", "");
+    setProductCategory(categoryValue);
   };
   useEffect(() => {
     const filteredProducts = allProducts.filter(
-      (product) => product.category === productName
+      (product) => product.category === productCategory
     );
     setProducts(filteredProducts);
-  }, [productName]);
+  }, [productCategory]);
 
   return (
     <>
-      {categories.map((category, index) => (
+      {categories.map((category) => (
         <button
           type="button"
           className="btn btn-secondary btn-lg data-toggle=button"
-          key={index}
+          key={category}
           value={category}
-          onClick={(e) => handleClick(e)}
+          onClick={() => handleClick(category)}
         >
           {category}
         </button>
@@ -32,4 +32,4 @@ const CategoryButton = ({ categories, setProducts }) => {
   );
 };
 
-export default CategoryButton;
+export default CategoryButtons;

@@ -5,7 +5,7 @@ import "./App.css";
 import categories from "./fake-data/all-categories";
 
 function App() {
-  const [products, setProducts] = useState("");
+  const [products, setProducts] = useState([]);
 
   return (
     <div className="App">
