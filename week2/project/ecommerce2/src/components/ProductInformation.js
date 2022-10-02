@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 const ProductInformation = () => {
   const [product, setProduct] = useState("");
+  const [isLoading, setLoading] = useState(true);
   let { productId } = useParams();
   useEffect(() => {
     (async () => {
@@ -12,12 +13,17 @@ const ProductInformation = () => {
         );
         const data = await response.json();
         setProduct(data);
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
     })();
   }, [productId]);
-  return (
+  return isLoading ? (
+    <>
+      <h2>Loading...</h2>
+    </>
+  ) : (
     <div className="card mb-3">
       <h4> Product Information</h4>
       <div className="row g-0">

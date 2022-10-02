@@ -14,9 +14,8 @@ const ProductsByCategories = () => {
         const response = await fetch(
           `https://fakestoreapi.com/products/categories`
         );
-        const Data = await response.json();
-        console.log(Data);
-        setProduct(Data);
+        const data = await response.json();
+        setProduct(data);
         setLoading(false);
       } catch (err) {
         console.log(err.message);
@@ -30,9 +29,8 @@ const ProductsByCategories = () => {
         : "https://fakestoreapi.com/products";
       try {
         const response = await fetch(Url);
-        const Data = await response.json();
-        console.log(Data);
-        setFilteredProducts(Data);
+        const data = await response.json();
+        setFilteredProducts(data);
         setLoading(false);
       } catch (err) {
         console.log(err.message);
@@ -47,9 +45,9 @@ const ProductsByCategories = () => {
     <>
       <div>
         <h1> Products </h1>
-        {products.map((product, index) => (
+        {products.map((product) => (
           <button
-            key={index}
+            key={product.id}
             type="button"
             onClick={() => {
               setSelectedCategory(product);
